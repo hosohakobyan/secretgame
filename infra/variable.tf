@@ -95,6 +95,11 @@ variable "alb_tg_protocol" {
 
 }
 
+variable "target_type" {
+  default = "instance"
+  type = string
+  
+}
 
 
 variable "health_interval" {

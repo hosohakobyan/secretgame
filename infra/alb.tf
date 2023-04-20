@@ -4,8 +4,7 @@ resource "aws_lb_target_group" "secretgame_tg" {
   port        = var.alb_tg_port
   protocol    = var.alb_tg_protocol
   vpc_id      = aws_vpc.secretgame.id
-  target_type = "instance"
-
+  target_type = var.target_type
   health_check {
     interval            = var.health_interval
     port                = var.health_port

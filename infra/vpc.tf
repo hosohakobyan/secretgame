@@ -2,7 +2,7 @@ resource "aws_vpc" "secretgame" {
   cidr_block = var.cidr_block
 
   tags = {
-    Name = "secretgame"
+    Name = var.env
   }
 }
 
@@ -10,7 +10,7 @@ resource "aws_internet_gateway" "secretgame_igw" {
   vpc_id = aws_vpc.secretgame.id
 
   tags = {
-    Name = "secretgame_igw"
+    Name = "${var.env}_igw"
   }
 }
 
@@ -21,7 +21,7 @@ resource "aws_subnet" "secretgame_public_a" {
   availability_zone       = var.availability_zone_public_a
 
   tags = {
-    Name = "secretgame_public_a"
+    Name = "${var.env}_public_a"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_subnet" "secretgame_public_b" {
   availability_zone       = var.availability_zone_public_b
 
   tags = {
-    Name = "secretgame_public_b"
+    Name = "${var.env}_public_b"
   }
 }
 
@@ -47,7 +47,7 @@ resource "aws_route_table" "rout_table_secretgame" {
 
 
   tags = {
-    Name = "route_secretgame"
+    Name = "${var.env}_route"
   }
 }
 
@@ -74,7 +74,7 @@ resource "aws_nat_gateway" "secretgame_nat" {
   allocation_id = aws_eip.secretgame-eip.id
 
   tags = {
-    Name = "secretgame_gw_nat"
+    Name = "${var.env}_gw_nat"
   }
 
   depends_on = [aws_internet_gateway.secretgame_igw]
@@ -87,7 +87,7 @@ resource "aws_subnet" "secretgame_private_a" {
   availability_zone = var.availability_zone_private-a
 
   tags = {
-    Name = "secretgame_private_a"
+    Name = "${var.env}_private_a"
   }
 
 }
@@ -98,7 +98,7 @@ resource "aws_subnet" "secretgame_private_b" {
   availability_zone = var.availability_zone_private-b
 
   tags = {
-    Name = "secretgame_private_b"
+    Name = "${var.env}_private_b"
   }
 
 }
@@ -114,7 +114,7 @@ resource "aws_route_table" "rout_secretgame_private" {
 
 
   tags = {
-    Name = "secretgame_route_private"
+    Name = "${var.env}_route_private"
   }
 }
 
@@ -132,7 +132,7 @@ resource "aws_route_table_association" "route_secretgame_private_b" {
 
 
 resource "aws_db_subnet_group" "secretgame_db_subnet" {
-  name = "secretgame-db-subnet-group"
+  name = "${var.env}-db-subnet-group"
 
   subnet_ids = [
     "${aws_subnet.secretgame_private_a.id}",
@@ -140,6 +140,6 @@ resource "aws_db_subnet_group" "secretgame_db_subnet" {
   ]
 
   tags = {
-    Name = "secretgame-db-subnet-group"
+    Name = "${var.env}-db-subnet-group"
   }
 }

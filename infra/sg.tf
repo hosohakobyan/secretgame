@@ -33,7 +33,7 @@ resource "aws_security_group" "secretgame_sg" {
   description = "80 TLS inbound traffic"
   vpc_id      = aws_vpc.secretgame.id
 
-    dynamic "ingress" {
+  dynamic "ingress" {
     for_each = var.secretgame_sg_ports
     content {
       from_port   = ingress.value

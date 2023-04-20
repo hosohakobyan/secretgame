@@ -44,7 +44,7 @@ resource "aws_autoscaling_group" "capacity_provider" {
   tags = [
     {
       key                 = "Name"
-      value               = "secretgame"
+      value               = var.env
       propagate_at_launch = true
     },
   ]
@@ -52,7 +52,7 @@ resource "aws_autoscaling_group" "capacity_provider" {
 
 resource "aws_launch_template" "secretgame-lt" {
   name                   = var.lt_name
-  image_id               = var.image_id[var.region] 
+  image_id               = var.image_id[var.region]
   instance_type          = var.instance_type
   key_name               = var.key_ec2
   vpc_security_group_ids = [aws_security_group.secretgame_sg.id]
@@ -72,7 +72,7 @@ resource "aws_launch_template" "secretgame-lt" {
   }
 
   tags = {
-    Name = "secretgame"
+    Name = var.env
   }
 
 }

@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "secgame_backend" {
+resource "aws_ecs_task_definition" "heimlich_stage" {
   family = var.family
   container_definitions = jsonencode([
     {
@@ -25,10 +25,10 @@ resource "aws_ecs_task_definition" "secgame_backend" {
 
 }
 
-resource "aws_ecs_service" "secretgame_service" {
+resource "aws_ecs_service" "heimlich_stage_service" {
   name            = "${var.env}_service"
-  cluster         = data.aws_ecs_cluster.secretgame.id
-  task_definition = aws_ecs_task_definition.secgame_backend.arn
+  cluster         = data.aws_ecs_cluster.heimlich_stage.id
+  task_definition = aws_ecs_task_definition.heimlich_stage.arn
   desired_count   = 1
   iam_role        = data.aws_iam_role.role.arn
 
@@ -39,7 +39,7 @@ resource "aws_ecs_service" "secretgame_service" {
   }
 
   load_balancer {
-    target_group_arn = data.aws_lb_target_group.secretgame_tg.arn
+    target_group_arn = data.aws_lb_target_group.heimlich_stage_tg.arn
     container_name   = var.lb_container_name
     container_port   = var.lb_container_port
   }

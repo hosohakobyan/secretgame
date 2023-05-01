@@ -1,17 +1,17 @@
 variable "env" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
 #===========task definition=================
 variable "family" {
-  default = "secgame_backend"
+  default = "heimlich_stage"
   type    = string
 
 }
 
 variable "task_def_name" {
-  default = "secgamenackend"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -47,7 +47,7 @@ variable "hostPort" {
 }
 
 variable "host_path" {
-  default = "/ecs/secretgame-storage"
+  default = "/ecs/heimlichstage-storage"
   type    = string
 
 }
@@ -66,7 +66,7 @@ variable "ordered_placement_field" {
 }
 
 variable "lb_container_name" {
-  default = "secgamebackend"
+  default = "heimlichstage"
   type    = string
 }
 
@@ -78,5 +78,5 @@ variable "lb_container_port" {
 
 variable "lb_tg_name" {
   type    = string
-  default = "secretgame"
+  default = "heimlich_stage"
 }

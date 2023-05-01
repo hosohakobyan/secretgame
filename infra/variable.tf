@@ -1,5 +1,5 @@
 variable "env" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -78,7 +78,7 @@ variable "route_cidr_private" {
 }
 #========alb-tg========================
 variable "alb_tg_name" {
-  default = "secretgame-lb"
+  default = "heimlich_stage_lb"
   type    = string
 
 }
@@ -146,7 +146,7 @@ variable "healthy_matcher" {
 #===========ALB=========================
 
 variable "alb_name" {
-  default = "secretgame-lb"
+  default = "heimlich_stage_lb"
   type    = string
 
 }
@@ -158,7 +158,7 @@ variable "alb_type" {
 }
 
 variable "tags_name" {
-  default = "secretgame-appLoadbalancer"
+  default = "heimlich_stage_appLoadbalancer"
   type    = string
 
 }
@@ -196,7 +196,7 @@ variable "secretgame_sg_ports" {
 #=======lp============================
 
 variable "lt_name" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -224,7 +224,7 @@ variable "device_name" {
 #=========asg=========================
 
 variable "asg-name" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -289,16 +289,16 @@ variable "on_demand_percentage_above_base_capacity" {
 
 }
 
-variable "lt_version" {
-  default = "$Latest"
-  type    = string
+# variable "lt_version" {
+#   default = "$Latest"
+#   type    = string
 
-}
+# }
 
 #=======capacity_provider============
 
 variable "capacity_provider_name" {
-  default = "secretgame_capacity_provider"
+  default = "heimlich_stage_capacity_provider"
   type    = string
 
 }
@@ -327,13 +327,6 @@ variable "maximum_scaling_step_size" {
 
 }
 
-#========cluster name=======
-variable "cluster_name" {
-  type    = string
-  default = "secretgame"
-
-}
-
 #===== UP======================================
 variable "scaling_adjustment-up" {
   default = 1
@@ -342,7 +335,7 @@ variable "scaling_adjustment-up" {
 }
 
 variable "name-up-policy" {
-  default = "secretgame_policy_up"
+  default = "heimlich_stage_policy_up"
   type    = string
 
 }
@@ -366,7 +359,7 @@ variable "evaluation_periods-up" {
 }
 
 variable "alarm_name-up" {
-  default = "secretgame_cpu_alarm_up"
+  default = "heimlich_stage_cpu_alarm_up"
   type    = string
 
 }
@@ -421,7 +414,7 @@ variable "alarm_description_up" {
 #========DOWN====================================
 
 variable "name-down" {
-  default = "secretgame_policy_down"
+  default = "heimlich_stage_policy_down"
   type    = string
 
 }
@@ -445,7 +438,7 @@ variable "cooldown-down" {
 }
 
 variable "alarm_name-down" {
-  default = "secretgame_cpu_alarm_down"
+  default = "heimlich_stage_cpu_alarm_down"
   type    = string
 
 }
@@ -501,7 +494,7 @@ variable "alarm_description_down" {
 #=================rds=======================
 
 variable "rds_password_name" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -543,7 +536,7 @@ variable "instance_class" {
 }
 
 variable "db_name" {
-  default = "secretgame"
+  default = "heimlich_stage"
   type    = string
 
 }
@@ -575,7 +568,7 @@ variable "override_special" {
 }
 
 variable "name-key-rds" {
-  default = "secretgame-rds-password"
+  default = "heimlich_stage_rds_password"
   type    = string
 
 }

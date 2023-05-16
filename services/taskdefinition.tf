@@ -1,4 +1,4 @@
-resource "aws_ecs_task_definition" "heimlich_stage" {
+resource "aws_ecs_task_definition" "task_definition" {
   family = var.family
   container_definitions = jsonencode([
     {
@@ -6,6 +6,7 @@ resource "aws_ecs_task_definition" "heimlich_stage" {
       image     = var.task_def_image
       cpu       = var.task_def_cpu
       memory    = var.task_def_memory
+      environment = var.env-variables
       essential = true
       portMappings = [
         {
@@ -25,10 +26,10 @@ resource "aws_ecs_task_definition" "heimlich_stage" {
 
 }
 
-resource "aws_ecs_service" "heimlich_stage_service" {
+resource "aws_ecs_service" "ecs_service" {
   name            = "${var.env}_service"
   cluster         = data.aws_ecs_cluster.heimlich_stage.id
-  task_definition = aws_ecs_task_definition.heimlich_stage.arn
+  task_definition = aws_ecs_task_definition.task_definition.arn
   desired_count   = 1
   iam_role        = data.aws_iam_role.role.arn
 

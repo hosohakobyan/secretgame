@@ -78,7 +78,7 @@ variable "route_cidr_private" {
 }
 #========alb-tg========================
 variable "alb_tg_name" {
-  default = "heimlich_stage_lb"
+  default = "stage-lb"
   type    = string
 
 }
@@ -97,8 +97,8 @@ variable "alb_tg_protocol" {
 
 variable "target_type" {
   default = "instance"
-  type = string
-  
+  type    = string
+
 }
 
 
@@ -146,7 +146,7 @@ variable "healthy_matcher" {
 #===========ALB=========================
 
 variable "alb_name" {
-  default = "heimlich_stage_lb"
+  default = "stage-lb"
   type    = string
 
 }
@@ -187,7 +187,7 @@ variable "allow_ports_alb" {
   default     = ["80", "443", "8080", ]
 }
 
-variable "secretgame_sg_ports" {
+variable "sg_ports" {
   description = "List of Ports to open for sg"
   type        = list(any)
   default     = ["80", "22", "8080", "443"]
@@ -202,7 +202,7 @@ variable "lt_name" {
 }
 
 variable "instance_type" {
-  default = "t3.large"
+  default = "t2.micro"
   type    = string
 
 }
@@ -260,7 +260,7 @@ variable "metrics_granularity" {
 }
 
 variable "key_ec2" {
-  default = "frankfurt"
+  default = "frankfurt-mac"
   type    = string
 
 }

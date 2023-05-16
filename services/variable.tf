@@ -4,6 +4,25 @@ variable "env" {
 
 }
 #===========task definition=================
+variable "env-variables" {
+  type = string(any)
+  default = [
+    {
+      "key"   : "APP_ROLE"
+      "value" : "adminbackend"
+    },
+    {
+      "key"   : "APP_PROJ"
+      "value" : "heimlich"
+    },
+    {
+      "key"   : "APP_ENV"
+      "value" : "prodaction"
+     }
+  ]
+  
+}
+
 variable "family" {
   default = "heimlich_stage"
   type    = string
